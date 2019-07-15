@@ -15,9 +15,15 @@ public class CashRegisterTest {
 
     @Test
     public void should_print_the_real_purchase_when_call_process() {
-        //given
-        //when
-        //then
+        Item[] items = {new Item("milkTea", 15), new Item("chocolate", 6)};
+        Purchase purchase = new Purchase(items);
+        Printer printer = new Printer();
+        CashRegister cashRegister = new CashRegister(printer);
+
+        cashRegister.process(purchase);
+
+        assertThat(byteArrayOutputStream.toString()).isEqualTo("milkTea\t15.0\nchocolate\t6.0\n");  // 加toString转为string类型
+//      assertEquals("milkTea\t15\nchocolate\t6\n", byteArrayOutputStream.toString());  // 为什么这一条不对
     }
 
     @Test
