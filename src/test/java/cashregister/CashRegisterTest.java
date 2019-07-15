@@ -28,9 +28,14 @@ public class CashRegisterTest {
 
     @Test
     public void should_print_the_stub_purchase_when_call_process() {
-        //given
-        //when
-        //then
+         Printer printer = new Printer();
+        CashRegister cashRegister = new CashRegister(printer);
+        Purchase purchase = mock(Purchase.class);
+        when(purchase.asString()).thenReturn("mock purchase");
+
+        cashRegister.process(purchase);
+
+        assertThat(byteArrayOutputStream.toString()).isEqualTo("mock purchase");
     }
 
     @Test
