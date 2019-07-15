@@ -6,7 +6,12 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 
 public class CashRegisterTest {
+    static ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
+    @BeforeAll
+    static public void setup() {
+        System.setOut(new PrintStream(byteArrayOutputStream));
+    }
 
     @Test
     public void should_print_the_real_purchase_when_call_process() {
