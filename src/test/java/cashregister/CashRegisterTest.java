@@ -40,9 +40,14 @@ public class CashRegisterTest {
 
     @Test
     public void should_verify_with_process_call_with_mockito() {
-        //given
-        //when
-        //then
+         Purchase mockedPurchase = mock(Purchase.class);
+        Printer mockedPrinter = mock(Printer.class);
+        CashRegister cashRegister = new CashRegister(mockedPrinter);
+
+        when(mockedPurchase.asString()).thenReturn("test");
+        cashRegister.process(mockedPurchase);
+
+        verify(mockedPrinter).print("test");
     }
 
 }
